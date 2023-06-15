@@ -98,7 +98,8 @@
         "*/install": true,
         "*/build": true,
         "*/log": true,
-        "**/.gitignore": true
+        "**/.gitignore": true,
+        "**/.gitkeep": true
     }
     
 }
