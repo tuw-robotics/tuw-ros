@@ -1,8 +1,8 @@
 OWNER = tuwrobotics
-OWNER-ALAB = registry.auto.tuwien.ac.at/mr/mr_root
-PREFIX = mr
-CONTAINER_PROJECT_ENV_NAME = MR_DIR
-CONTAINER_PROJECT_FOLDER_NAME = mobile_robotics
+OWNER-ALAB = registry.auto.tuwien.ac.at/roblab/project-mrrp2
+PREFIX = tuw
+CONTAINER_PROJECT_ENV_NAME = MRRP2_DIR
+CONTAINER_PROJECT_FOLDER_NAME = mrrp2
 DOCKER_BUILD_ARG = --rm -t
 #DOCKER_BUILD_ARG = "--rm -t --squash"
 BASE_CONTAINER = tuw-${ROS_DISTRO}-ide	
