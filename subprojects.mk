@@ -29,6 +29,8 @@ ws02/src/tuw_geometry:
 ws02/src/tuw_laserscan_features:
 		git clone -b ros2 git@github.com:tuw-robotics/tuw_laserscan_features.git $@
 
+ws02/src/mr_nav2:
+		git clone -b main git@git.auto.tuwien.ac.at:mr/mr_nav2.git $@
 
 clone-ws00: \
 	ws00/src/teleop_tools \
@@ -43,6 +45,7 @@ clone-ws01: \
 clone-ws02: \
 	ws02/src/tuw_geometry \
 	ws02/src/tuw_msgs \
-	ws02/src/tuw_laserscan_features 
+	ws02/src/tuw_laserscan_features  \
+	ws02/src/mr_nav2 
 
 clone: clone-ws00 clone-ws01 clone-ws02

@@ -18,9 +18,16 @@ cd $MRRP2_DIR
 make clone 
 ```
 ## VSCode
-The project is allrady configured for vscode just start it from __$MR_DIR__
+The project is allrady configured for vscode just start it from __$MRRP2_DIR__
 
 ```
 cd ${MR_DIR}
 code .
+```
+## Docker
+There is a docker file ready
+```
+cd ${MR_DIR}/docker
+make build
+make run
 ```

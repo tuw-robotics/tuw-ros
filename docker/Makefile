@@ -31,17 +31,24 @@ help:
 login:
 	@docker login registry.auto.tuwien.ac.at -u $(USER)
 	
-build:
+build-base:
+	@docker build ${DOCKER_BUILD_ARG} ${OWNER}/${PROJECT_NAME}-${USER}-base \
+		--build-arg OWNER=osrf \
+		--build-arg BASE_CONTAINER=ros:${ROS_DISTRO}-desktop \
+		--build-arg MY_USER=${USER} \
+		--build-arg MY_UID=${CURRENT_UID} \
+		--build-arg MY_GID=${CURRENT_GID} \
+		--build-arg CONTAINER_PROJECTS_DIR=${CONTAINER_PROJECTS_DIR} \
+		--build-arg CONTAINER_PROJECT_NAME=${PROJECT_NAME} \
+		-f Dockerfile-base ./
+
+build: build-base
 	@docker build ${DOCKER_BUILD_ARG} ${OWNER}/${PROJECT_NAME}-${USER} \
-					--build-arg OWNER=osrf \
-					--build-arg BASE_CONTAINER=ros:${ROS_DISTRO}-desktop \
-					--build-arg MY_USER=${USER} \
-					--build-arg MY_UID=${CURRENT_UID} \
-					--build-arg MY_GID=${CURRENT_GID} \
-					--build-arg CONTAINER_PROJECT_ENV_NAME=${CONTAINER_PROJECT_ENV_NAME} \
-					--build-arg CONTAINER_PROJECTS_DIR=${CONTAINER_PROJECTS_DIR} \
-					--build-arg CONTAINER_PROJECT_NAME=${PROJECT_NAME} \
-					-f Dockerfile ./
+		--build-arg OWNER=${OWNER} \
+		--build-arg BASE_CONTAINER=${PROJECT_NAME}-${USER}-base \
+		--build-arg CONTAINER_PROJECT_ENV_NAME=${CONTAINER_PROJECT_ENV_NAME} \
+		--build-arg CONTAINER_PROJECT_NAME=${PROJECT_NAME} \
+		-f Dockerfile ./
 
 run:
 	@docker run -ti -e "TERM=xterm-256color" --rm --privileged \
@@ -52,3 +59,15 @@ run:
 		-v /dev/shm:/dev/shm \
 		-v ${HOST_PROJECT_DIR}:${CONTAINER_PROJECTS_DIR}/${PROJECT_NAME} \
 		${OWNER}/${PROJECT_NAME}-${USER}
+
+
+create:
+	@docker create -e "TERM=xterm-256color" --privileged \
+	    --network="host" --env="DISPLAY" \
+	    --add-host "${HOSTNAME}-${PREFIX}:127.0.0.1" \
+	    --hostname ${HOSTNAME}-${PREFIX} \
+	    --name ${HOSTNAME}-${PREFIX} \
+		-v /dev/shm:/dev/shm \
+		--entrypoint /entrypoint-keep-running.sh  \
+		-v ${HOST_PROJECT_DIR}:/opt/projects/${CONTAINER_PROJECT_FOLDER_NAME} \
+		${PREFIX}-${ROS_DISTRO}
