@@ -1,8 +1,7 @@
 OWNER = tuwrobotics
-OWNER-ALAB = registry.auto.tuwien.ac.at/roblab/project-mrrp2
 PREFIX = tuw
+PROJECT_NAME = mrrp2
 CONTAINER_PROJECT_ENV_NAME = MRRP2_DIR
-CONTAINER_PROJECT_FOLDER_NAME = mrrp2
 DOCKER_BUILD_ARG = --rm -t
 #DOCKER_BUILD_ARG = "--rm -t --squash"
 BASE_CONTAINER = tuw-${ROS_DISTRO}-ide	
@@ -10,6 +9,10 @@ BASE_CONTAINER = tuw-${ROS_DISTRO}-ide
 ROS_DISTRO = humble
 HOST_PROJECT_DIR = $(shell cd ..; pwd)
 HOSTNAME := $(shell hostname)
+CURRENT_UID := $(shell id -u)
+CURRENT_GID := $(shell id -g)
+CONTAINER_PROJECTS_DIR = /home/${USER}/projects
+
 RUN = develop
 TAG = latest 
 
@@ -29,21 +32,16 @@ login:
 	@docker login registry.auto.tuwien.ac.at -u $(USER)
 	
 build:
-	@docker build ${DOCKER_BUILD_ARG} ${PREFIX}-${ROS_DISTRO} \
-					--build-arg OWNER=${OWNER} \
-					--build-arg BASE_CONTAINER=${BASE_CONTAINER} \
+	@docker build ${DOCKER_BUILD_ARG} ${OWNER}/${PROJECT_NAME}-${USER} \
+					--build-arg OWNER=osrf \
+					--build-arg BASE_CONTAINER=ros:${ROS_DISTRO}-desktop \
+					--build-arg MY_USER=${USER} \
+					--build-arg MY_UID=${CURRENT_UID} \
+					--build-arg MY_GID=${CURRENT_GID} \
 					--build-arg CONTAINER_PROJECT_ENV_NAME=${CONTAINER_PROJECT_ENV_NAME} \
-					--build-arg CONTAINER_PROJECT_FOLDER_NAME=${CONTAINER_PROJECT_FOLDER_NAME} \
-					-f Dockerfile  ../
-
-build-alab:
-	@docker build ${DOCKER_BUILD_ARG} ${PREFIX}-${ROS_DISTRO} \
-					--build-arg OWNER=${OWNER-ALAB} \
-					--build-arg BASE_CONTAINER=${BASE_CONTAINER} \
-					--build-arg CONTAINER_PROJECT_ENV_NAME=${CONTAINER_PROJECT_ENV_NAME} \
-					--build-arg CONTAINER_PROJECT_FOLDER_NAME=${CONTAINER_PROJECT_FOLDER_NAME} \
-					-f Dockerfile  ../
-
+					--build-arg CONTAINER_PROJECTS_DIR=${CONTAINER_PROJECTS_DIR} \
+					--build-arg CONTAINER_PROJECT_NAME=${PROJECT_NAME} \
+					-f Dockerfile ./
 
 run:
 	@docker run -ti -e "TERM=xterm-256color" --rm --privileged \
@@ -52,38 +50,5 @@ run:
 	    --hostname ${HOSTNAME}-${PREFIX} \
 	    --name ${HOSTNAME}-${PREFIX} \
 		-v /dev/shm:/dev/shm \
-		-v ${HOST_PROJECT_DIR}:/opt/projects/${CONTAINER_PROJECT_FOLDER_NAME} \
-		${PREFIX}-${ROS_DISTRO}
-
-run-alab:
-	@docker run -ti -e "TERM=xterm-256color" --rm --privileged \
-	    --network="host" --env="DISPLAY" \
-	    --add-host "${HOSTNAME}-${PREFIX}:127.0.0.1" \
-	    --hostname ${HOSTNAME}-${PREFIX} \
-	    --name ${HOSTNAME}-${PREFIX} \
-		-v /dev/shm:/dev/shm \
-		-v /local/home/robot/projects/${CONTAINER_PROJECT_FOLDER_NAME}:/local/home/robot/projects/${CONTAINER_PROJECT_FOLDER_NAME} \
-		${PREFIX}-${ROS_DISTRO}
-
-create:
-	@docker create -e "TERM=xterm-256color" --privileged \
-	    --network="host" --env="DISPLAY" \
-	    --add-host "${HOSTNAME}-${PREFIX}:127.0.0.1" \
-	    --hostname ${HOSTNAME}-${PREFIX} \
-	    --name ${HOSTNAME}-${PREFIX} \
-		-v /dev/shm:/dev/shm \
-		--entrypoint /entrypoint-keep-running.sh  \
-		-v ${HOST_PROJECT_DIR}:/opt/projects/${CONTAINER_PROJECT_FOLDER_NAME} \
-		${PREFIX}-${ROS_DISTRO}
-															
-attach:
-	@docker  exec -it ${HOSTNAME}-${PREFIX} bash 
-
-start:
-	@docker  start -i ${HOSTNAME}-${PREFIX}
-
-stop:
-	@docker  stop ${HOSTNAME}-${PREFIX}
-	
-rm:
-	@docker  rm ${HOSTNAME}-${PREFIX}
+		-v ${HOST_PROJECT_DIR}:${CONTAINER_PROJECTS_DIR}/${PROJECT_NAME} \
+		${OWNER}/${PROJECT_NAME}-${USER}

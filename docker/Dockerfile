@@ -1,26 +1,87 @@
-ARG OWNER
-ARG BASE_CONTAINER
+ARG OWNER=osrf
 ARG ROS_DISTRO=humble
+ARG UBUNTU_DISTRO=jammy
+ARG BASE_CONTAINER=ros:${ROS_DISTRO}-desktop
 ARG ROOT_CONTAINER=$OWNER/$BASE_CONTAINER 
-
 FROM $ROOT_CONTAINER
-ARG CONTAINER_PROJECT_ENV_NAME
-ARG CONTAINER_PROJECT_FOLDER_NAME
-ENV CONTAINER_PROJECT_DIR=${PROJECTS_DIR}/${CONTAINER_PROJECT_FOLDER_NAME}
+
+# Replace 1000 with your user / group id
+ARG MY_USER=robot
+ARG MY_NAME="Robot"
+ARG MY_PASSWORD="password"
+ARG MY_UID=1000
+ARG MY_GID=1000
+ARG TZ=Europe/Vienna
+
+ENV MY_USER=${MY_USER}
+ENV MY_HOME=/home/${MY_USER}
+
+ENV CONFIG_DIR=./config
+ENV SCRIPTS_DIR=./scripts
+ENV INSTALL_DIR=/install
+
+ARG CONTAINER_PROJECTS_DIR=${MY_HOME}/projects
+ARG CONTAINER_PROJECT_NAME="my_project"
+ARG CONTAINER_PROJECT_ENV_NAME="MY_PROJECT_DIR"
+ENV CONTAINER_PROJECT_NAME=${CONTAINER_PROJECT_NAME}
+ENV CONTAINER_PROJECTS_DIR=${CONTAINER_PROJECTS_DIR}
+ENV CONTAINER_PROJECT_DIR=${CONTAINER_PROJECTS_DIR}/${CONTAINER_PROJECT_NAME}
 ENV CONTAINER_PROJECT_ENV_NAME=${CONTAINER_PROJECT_ENV_NAME}
 
 USER root
-RUN mkdir -p ${CONTAINER_PROJECT_DIR}
-COPY --chown=${MY_USER}:${MY_USER} . ${CONTAINER_PROJECT_DIR}
-RUN /bin/bash -c "cd $CONTAINER_PROJECT_DIR; make clean"
+
+RUN apt-get update && apt-get -y upgrade
+# timezone
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+# copy scripts to container
+COPY ${SCRIPTS_DIR}/ ${INSTALL_DIR}/
+# allow to run scripts in the container
+RUN chmod -R a+x ${INSTALL_DIR}
+# copy keyboard config
+COPY ${CONFIG_DIR}/keyboard /etc/default/keyboard
+# setup user
+RUN $INSTALL_DIR/setup/add_user.sh
+# copy env
+COPY --chown=${MY_USER}:${MY_USER} ${CONFIG_DIR}/env.sh ${MY_HOME}/projects/env.sh
+# copy bash history
+COPY --chown=${MY_USER}:${MY_USER} ${CONFIG_DIR}/bash_history ${MY_HOME}/.bash_history
+# copy tmux config
+COPY --chown=${MY_USER}:${MY_USER} ${CONFIG_DIR}/tmux.conf ${MY_HOME}/.tmux.conf
+
+# install utils (like git, vim, nano, ...)
+RUN apt-get install -y \
+      cmake            \
+      cmake-curses-gui \
+      curl             \
+      git              \
+      gnupg2           \
+      keychain         \
+      myrepos          \
+      nano             \
+      python3          \
+      python3-pip      \
+      rsync            \
+      tmux             \
+      vim              \
+      wget             \
+      iputils-ping
+      
+ARG INSTALL_CODE=true
+RUN if [ "$INSTALL_CODE" = "true" ]; then $INSTALL_DIR/setup/install_code.sh; fi
+
+# clean apt
+RUN apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
 
 USER ${MY_USER}
-RUN sed -i 's^MY_PROJECT_DIR^'"${CONTAINER_PROJECT_ENV_NAME}"'='"${CONTAINER_PROJECT_DIR}"'^g' ~/.bashrc
-RUN /bin/bash -c "cd $CONTAINER_PROJECT_DIR; make clean"
+# change color in bash green -> red
+RUN sed -i 's/'"1;32"'/'"1;31"'/g' ~/.bashrc
+RUN echo "export ROS_DISTRO=humble" >> ~/.bashrc
+RUN echo "export PROJECTS_DIR=$CONTAINER_PROJECTS_DIR" >> ~/.bashrc
+RUN echo "export $CONTAINER_PROJECT_ENV_NAME=$CONTAINER_PROJECT_DIR" >> ~/.bashrc
+RUN echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.bashrc
+RUN echo "if [ -f "env.sh" ]; then source env.sh; fi" >> ~/.bashrc
 
-COPY --chown=${MY_USER}:${MY_USER} ./info.md ${CONTAINER_PROJECT_DIR}/info.md
-
-USER ${MY_USER}
+ENV TERM xterm-256color
 WORKDIR ${CONTAINER_PROJECT_DIR}
 ENV HOME=${MY_HOME}
 CMD /bin/bash
