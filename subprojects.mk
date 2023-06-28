@@ -11,6 +11,9 @@ ws00/src/navigation2:
 		git clone -b humble git@github.com:ros-planning/navigation2.git $@
 		touch $@/COLCON_IGNORE
 
+ws00/src/tuw2_gazebo:
+		git clone -b ros2 git@github.com:tuw-robotics/tuw2_gazebo.git $@
+		
 ws01/src/Stage:
 		git clone -b ros2 git@github.com:tuw-robotics/Stage.git $@
 
@@ -35,7 +38,8 @@ ws02/src/mr_nav2:
 clone-ws00: \
 	ws00/src/teleop_tools \
 	ws00/src/slam_toolbox \
-	ws00/src/navigation2
+	ws00/src/navigation2 \
+	ws00/src/tuw2_gazebo 
 
 clone-ws01: \
 	ws01/src/Stage \

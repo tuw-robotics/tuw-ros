@@ -1,0 +1,15 @@
+name: gz
+
+windows:
+  - simulation:
+      layout: even-vertical
+      panes: 
+        - ros2 launch tuw_gazebo world.launch.py room:=cave
+        - sleep 5; ros2 launch tuw_gazebo_models spawn_robot.launch.py model_name:=robot0 robot:=pioneer3dx X:=-6.0 Y:=-6.0 Theta:=0.7
+        - ros2 launch tuw_gazebo_models rviz.launch.py config:=robot0
+  - localization:
+      layout: even-vertical
+      panes: 
+        - 
+        - 
+        - 

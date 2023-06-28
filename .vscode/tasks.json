@@ -16,8 +16,9 @@
         "Stage",
         "stage_ros2",
         "marker_msgs",
+        "tuw_fake_localization",
       ],
-      "default": "mr_ekf"
+      "default": "tuw_fake_localization"
     },
     {
       "type": "pickString",

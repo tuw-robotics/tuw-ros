@@ -2,13 +2,10 @@
     "python.autoComplete.extraPaths": [
         "/opt/ros/humble/lib/Python.8/site-packages"
     ],
-    "workbench.colorTheme": "Default Dark Modern",
-    "colcon.provideTasks": true,
+    "workbench.colorTheme": "Quiet Light",
     "python.analysis.extraPaths": [
         "/opt/ros/humble/lib/python3.10/site-packages"
     ],
-    "cmake.buildDirectory": "${workspaceFolder}/ws02/build/mr_pose_estimation",
-    "cmake.sourceDirectory": "/home/markus/projects/mobile_robotics/ws00/src/navigation2/nav2_amcl",
     "files.associations": {
         "functional": "cpp",
         "array": "cpp",
@@ -92,7 +89,9 @@
         "valarray": "cpp",
         "cfloat": "cpp",
         "ranges": "cpp",
-        "*.txx": "cpp"
+        "*.txx": "cpp",
+        "coroutine": "cpp",
+        "source_location": "cpp"
     },
     "files.exclude": {
         "*/install": true,
@@ -100,6 +99,7 @@
         "*/log": true,
         "**/.gitignore": true,
         "**/.gitkeep": true
-    }
+    },
+    "cmake.sourceDirectory": "/home/markus/projects/mrrp2/ws00/build/gazebo_msgs/gazebo_msgs__py"
     
 }
