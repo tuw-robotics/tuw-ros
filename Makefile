@@ -63,3 +63,6 @@ build-ws02:
 pull:
 	git pull origin
 	find . -type d -name .git -exec echo {} \; -exec git --git-dir={} --work-tree=${PROJECT_DIR}/{}/.. pull origin \;
+status:
+	git status -s
+	find . -type d -name .git -exec echo {} \; -exec git --git-dir={} --work-tree=${PROJECT_DIR}/{}/.. status -s \;

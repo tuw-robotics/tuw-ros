@@ -11,7 +11,7 @@ ws00/src/navigation2:
 		git clone -b humble git@github.com:ros-planning/navigation2.git $@
 		touch $@/COLCON_IGNORE
 
-ws00/src/tuw2_gazebo:
+ws01/src/tuw_gazebo:
 		git clone -b ros2 git@github.com:tuw-robotics/tuw2_gazebo.git $@
 		
 ws01/src/Stage:
@@ -32,24 +32,28 @@ ws02/src/tuw_geometry:
 ws02/src/tuw_laserscan_features:
 		git clone -b ros2 git@github.com:tuw-robotics/tuw_laserscan_features.git $@
 
-ws02/src/mr_nav2:
-		git clone -b main git@git.auto.tuwien.ac.at:mr/mr_nav2.git $@
+ws02/src/tuw_nav2:
+		git clone -b main git@github.com:tuw-robotics/tuw_nav2.git $@
+
+ws02/src/tuw_fake_localization:
+		git clone -b main git@github.com:tuw-robotics/tuw_fake_localization.git $@
 
 clone-ws00: \
 	ws00/src/teleop_tools \
 	ws00/src/slam_toolbox \
-	ws00/src/navigation2 \
-	ws00/src/tuw2_gazebo 
+	ws00/src/navigation2
 
 clone-ws01: \
 	ws01/src/Stage \
 	ws01/src/stage_ros2  \
-	ws01/src/marker_msgs 
+	ws01/src/marker_msgs  \
+	ws01/src/tuw_gazebo 
 
 clone-ws02: \
 	ws02/src/tuw_geometry \
 	ws02/src/tuw_msgs \
 	ws02/src/tuw_laserscan_features  \
-	ws02/src/mr_nav2 
+	ws02/src/tuw_nav2\
+	ws02/src/tuw_fake_localization  
 
 clone: clone-ws00 clone-ws01 clone-ws02
