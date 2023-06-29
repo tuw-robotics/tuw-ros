@@ -1,4 +1,8 @@
 
+ws00/src/gazebo_ros_pkgs:
+		git clone -b ros2 git@github.com:tuw-robotics/gazebo_ros_pkgs.git $@
+		touch $@/COLCON_IGNORE
+
 ws00/src/teleop_tools:
 		git clone -b foxy-devel git@github.com:ros-teleop/teleop_tools.git $@
 		touch $@/COLCON_IGNORE
@@ -23,14 +27,11 @@ ws01/src/stage_ros2:
 ws01/src/marker_msgs:
 		git clone -b ros2 git@github.com:tuw-robotics/marker_msgs.git $@
 
-ws02/src/tuw_msgs:
+ws01/src/tuw_msgs:
 		git clone -b ros2 git@github.com:tuw-robotics/tuw_msgs.git $@
 
-ws02/src/tuw_geometry:
+ws01/src/tuw_geometry:
 		git clone -b ros2 git@github.com:tuw-robotics/tuw_geometry.git $@
-
-ws02/src/tuw_laserscan_features:
-		git clone -b ros2 git@github.com:tuw-robotics/tuw_laserscan_features.git $@
 
 ws02/src/tuw_nav2:
 		git clone -b main git@github.com:tuw-robotics/tuw_nav2.git $@
@@ -41,18 +42,18 @@ ws02/src/tuw_fake_localization:
 clone-ws00: \
 	ws00/src/teleop_tools \
 	ws00/src/slam_toolbox \
-	ws00/src/navigation2
+	ws00/src/navigation2 \
+	ws00/src/gazebo_ros_pkgs
 
 clone-ws01: \
 	ws01/src/Stage \
 	ws01/src/stage_ros2  \
 	ws01/src/marker_msgs  \
-	ws01/src/tuw_gazebo 
+	ws01/src/tuw_gazebo \
+	ws01/src/tuw_geometry \
+	ws01/src/tuw_msgs
 
 clone-ws02: \
-	ws02/src/tuw_geometry \
-	ws02/src/tuw_msgs \
-	ws02/src/tuw_laserscan_features  \
 	ws02/src/tuw_nav2\
 	ws02/src/tuw_fake_localization  
 
