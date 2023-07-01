@@ -7,10 +7,7 @@
       "id": "pkgs",
       "description": "Which ros pkg do like?",
       "options": [
-        "mr_pf",
-        "mr_viz",
-        "mr_move",
-        "mr_ekf",
+        "tuw_nav2",
         "tuw_geometry",
         "tuw_laserscan_features",
         "Stage",

@@ -16,7 +16,7 @@ ws00/src/navigation2:
 		touch $@/COLCON_IGNORE
 
 ws01/src/tuw_gazebo:
-		git clone -b ros2 git@github.com:tuw-robotics/tuw2_gazebo.git $@
+		git clone -b ros2 git@github.com:tuw-robotics/tuw_gazebo.git $@
 		
 ws01/src/Stage:
 		git clone -b ros2 git@github.com:tuw-robotics/Stage.git $@
