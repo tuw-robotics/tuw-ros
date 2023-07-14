@@ -44,14 +44,14 @@ build:  \
 build-ws00: 
 	cd ${PROJECT_DIR}/ws00; \
 	source /opt/ros/${ROS_DISTRO}/setup.bash; \
-	colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=${BUILD_TYPE}; \
+	colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release; \
 
 build-ws01: 
 	cd ${PROJECT_DIR}/ws01; \
 	source /opt/ros/${ROS_DISTRO}/setup.bash; \
 	source ${PROJECT_DIR}/ws00/install/setup.bash; \
-	colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=${BUILD_TYPE} --packages-select Stage --cmake-args -DOpenGL_GL_PREFERENCE=LEGACY; \
-	colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=${BUILD_TYPE}
+	colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release --packages-select Stage --cmake-args -DOpenGL_GL_PREFERENCE=LEGACY; \
+	colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 
 build-ws02: 
 	source /opt/ros/${ROS_DISTRO}/setup.bash; \
