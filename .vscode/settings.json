@@ -2,7 +2,10 @@
     "python.autoComplete.extraPaths": [
         "/opt/ros/humble/lib/Python.8/site-packages"
     ],
-    "workbench.colorTheme": "Quiet Light",
+    "workbench.colorTheme": "Default Dark Modern",
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#2a70b0"
+    }
     "python.analysis.extraPaths": [
         "/opt/ros/humble/lib/python3.10/site-packages"
     ],

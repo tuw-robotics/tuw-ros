@@ -1,3 +1,4 @@
+PROJECT_NAME = tuw-ros
 PROJECT_DIR = $(shell pwd)
 SHELL = /bin/bash
 BUILD_TYPE = Debug
@@ -66,3 +67,11 @@ pull:
 status:
 	git status -s
 	find . -type d -name .git -exec echo {} \; -exec git --git-dir={} --work-tree=${PROJECT_DIR}/{}/.. status -s \;
+
+backup:
+	tar  --exclude='ws00/src' --exclude='build*' --exclude='install*' --exclude='kdev' --exclude='log' --exclude='*swp' --exclude='${PROJECT_NAME}*.tar.gz' \
+	     -zcvf ./${PROJECT_NAME}_$(shell date +%Y-%m-%d--%H-%M).tar.gz .
+
+backup-exclud-git:
+	tar  --exclude='.git' --exclude='ws00/src' --exclude='build*' --exclude='install*' --exclude='kdev' --exclude='log' --exclude='*swp' --exclude='${PROJECT_NAME}*.tar.gz' \
+	     -zcvf ./${PROJECT_NAME}_$(shell date +%Y-%m-%d--%H-%M).tar.gz .

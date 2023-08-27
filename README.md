@@ -1,4 +1,4 @@
-# Multi Robot Route Planner for ROS2 project root
+# TU Wien Robotics ROS-Root 
 
 ## Setup and Install
 ### .bashrc
@@ -6,7 +6,7 @@ Prepare your .bashrc so that your work space get sourced if you open a terminal 
 ```
 echo 'export ROS_DISTRO=humble' >> ~/.bashrc
 echo 'export PROJECTS_DIR=${HOME}/projects' >> ~/.bashrc
-echo 'export MRRP2_DIR=${PROJECTS_DIR}/mrrp2' >> ~/.bashrc
+echo 'export TUW_ROS_DIR=${PROJECTS_DIR}/tuw-ros' >> ~/.bashrc
 echo 'source /opt/ros/${ROS_DISTRO}/setup.bash' >> ~/.bashrc
 echo "if [ -f "env.sh" ]; then source env.sh; fi" >> ~/.bashrc
 ```
@@ -14,20 +14,20 @@ echo "if [ -f "env.sh" ]; then source env.sh; fi" >> ~/.bashrc
 ### subprojects
 The file subprojects.mk holds a list with all subprojects. You just need to run `make clone`. 
 ```
-cd $MRRP2_DIR
+cd $TUW_ROS_DIR
 make clone 
 ```
 ## VSCode
-The project is allrady configured for vscode just start it from __$MRRP2_DIR__
+The project is allrady configured for vscode just start it from __$TUW_ROS_DIR__
 
 ```
-cd ${MR_DIR}
+cd ${TUW_ROS_DIR}
 code .
 ```
 ## Docker
 There is a docker file ready
 ```
-cd ${MR_DIR}/docker
+cd ${TUW_ROS_DIR}/docker
 make build
 make run
 ```
