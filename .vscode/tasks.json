@@ -17,7 +17,7 @@
         "tuw_graph_server",
         "tuw_graph_rviz_plugins",
       ],
-      "default": "tuw_graph_rviz_plugins"
+      "default": "tuw_graph_server"
     },
     {
       "type": "pickString",
