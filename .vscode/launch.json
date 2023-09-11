@@ -142,6 +142,15 @@
             "cwd": "${workspaceFolder}",
         },
         {
+            "name": "tuw_geometry_test",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/ws01/build/tuw_geometry/test_geometry",
+            "args": [""],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+        },
+        {
             "name": "run pkg",
             "type": "cppdbg",
             "request": "launch",
