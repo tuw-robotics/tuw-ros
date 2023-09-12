@@ -24,11 +24,14 @@ ws01/src/Stage:
 ws01/src/stage_ros2:
 		git clone -b humble git@github.com:tuw-robotics/stage_ros2.git $@
 
+ws01/src/tuw_msgs:
+		git clone -b ros2 git@github.com:tuw-robotics/tuw_msgs.git $@
+
 ws01/src/marker_msgs:
 		git clone -b ros2 git@github.com:tuw-robotics/marker_msgs.git $@
 
-ws01/src/tuw_msgs:
-		git clone -b ros2 git@github.com:tuw-robotics/tuw_msgs.git $@
+ws01/src/tuw_marker_detection:
+		git clone -b ros2 git@github.com:tuw-robotics/tuw_marker_detection.git $@
 
 ws01/src/tuw_rviz:
 		git clone -b ros2 git@github.com:tuw-robotics/tuw_rviz.git $@
