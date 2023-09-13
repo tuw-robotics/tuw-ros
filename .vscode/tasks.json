@@ -16,8 +16,7 @@
         "tuw_fake_localization",
         "tuw_graph_server",
         "tuw_graph_rviz_plugins",
-      ],
-      "default": "tuw_graph_server"
+      ]
     },
     {
       "type": "pickString",
@@ -61,6 +60,12 @@
       "group": {
         "kind": "build",
         "isDefault": true
+      },
+      "presentation": {
+        "reveal": "never"
+      },
+      "runOptions": { 
+        "reevaluateOnRerun": false
       }
     },
     {

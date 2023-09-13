@@ -11,6 +11,7 @@ echo 'source /opt/ros/${ROS_DISTRO}/setup.bash' >> ~/.bashrc
 echo "if [ -f "env.sh" ]; then source env.sh; fi" >> ~/.bashrc
 ```
 
+
 ### subprojects
 The file subprojects.mk holds a list with all subprojects. You just need to run `make clone`. 
 ```
@@ -30,4 +31,18 @@ There is a docker file ready
 cd ${TUW_ROS_DIR}/docker
 make build
 make run
+```
+
+
+## How to run unit and ROS tests
+```
+export YOUR_PKG=tuw_geometry
+colcon build --packages-select $YOUR_PKG --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Debug --cmake-args -DBUILD_TESTING=true
+colcon test --packages-select $YOUR_PKG
+colcon test-result
+colcon test-result --verbose
+cd src/$YOUR_PKG
+ament_clang_format
+ament_clang_format --reformat
+ament_uncrustify . --reformat
 ```

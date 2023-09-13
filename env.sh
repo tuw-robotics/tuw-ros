@@ -1,6 +1,7 @@
 # skript to source a ros2 project
 
 export ROS_DISTRO=humble
+export ROS_DOMAIN_ID=1
 export PROJECT_DIR=${TUW_ROS_DIR}
 source /opt/ros/$ROS_DISTRO/setup.bash
 #export RMW_IMPLEMENTATION=rmw_fastrtps_cpp

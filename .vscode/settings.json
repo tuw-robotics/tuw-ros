@@ -1,4 +1,5 @@
 {
+    
     "python.autoComplete.extraPaths": [
         "/opt/ros/humble/lib/Python.8/site-packages"
     ],
