@@ -35,10 +35,12 @@ make run
 
 
 ## How to run unit and ROS tests
+[https://docs.ros.org/en/iron/Tutorials/Intermediate/Testing/CLI.html]
 ```
+sudo apt-get install ros-$ROS_DISTRO-ament-cmake-*
 export YOUR_PKG=tuw_geometry
 colcon build --packages-select $YOUR_PKG --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Debug --cmake-args -DBUILD_TESTING=true
-colcon test --packages-select $YOUR_PKG
+colcon test --ctest-args tests --packages-select $YOUR_PKG
 colcon test-result
 colcon test-result --verbose
 cd src/$YOUR_PKG
