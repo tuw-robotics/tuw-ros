@@ -14,9 +14,13 @@
         "stage_ros2",
         "marker_msgs",
         "tuw_fake_localization",
+        "tuw_graph",
         "tuw_graph_server",
         "tuw_graph_rviz_plugins",
-      ]
+        "rviz_common",
+        "rviz2"
+      ],
+      "default": "tuw_graph"
     },
     {
       "type": "pickString",

@@ -32,7 +32,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/ws01/build/stage_ros2/stage_ros2",
-            "args": ["--ros-args", "-p", "world_file:=cave.world", "-p", "enable_gui:=true"],
+            "args": ["--ros-args", "-p", "world_file:=hallway.world", "-p", "enable_gui:=true"],
             "stopAtEntry": true,
             "cwd": "${workspaceFolder}/ws01/src/stage_ros2/world/",
             "environment": [],
@@ -50,6 +50,15 @@
                     "ignoreFailures": true
                 }
             ]
+        },
+        {
+            "name": "voronoi_demo",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/ws02/install/tuw_graph/lib/tuw_graph/demo_voronoi",
+            "args": [""],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
         },
         {
             "name": "laserscan_linedetection",
