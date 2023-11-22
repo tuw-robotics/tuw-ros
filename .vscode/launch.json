@@ -52,6 +52,24 @@
             ]
         },
         {
+            "name": "demo_graph_io",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/ws02/install/tuw_graph/lib/tuw_graph/demo_graph_io",
+            "args": [""],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+        },
+        {
+            "name": "demo_skeleon_to_graph",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/ws02/install/tuw_graph/lib/tuw_graph/demo_skeleon_to_graph",
+            "args": [""],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+        },
+        {
             "name": "voronoi_demo",
             "type": "cppdbg",
             "request": "launch",
