@@ -110,7 +110,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/ws02/install/tuw_graph_server/lib/tuw_graph_server/graph_server_node",
-            "args": ["--ros-args", "--params-file", "./ws02/src/tuw_graph/tuw_graph_server/config/graph_server/cave.yaml"],
+            "args": ["--ros-args", "--params-file", "./ws02/src/tuw_graph/tuw_graph_server/config/graph_server/cave/graph.yaml"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
         },
