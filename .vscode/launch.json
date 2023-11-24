@@ -74,7 +74,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/ws02/install/tuw_graph/lib/tuw_graph/demo_voronoi",
-            "args": [""],
+            "args": ["ws02/src/tuw_graph/tuw_graph/res/map_occupancy_grid.png"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
         },
