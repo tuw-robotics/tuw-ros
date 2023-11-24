@@ -29,18 +29,21 @@ clean-ws01:
 clean-ws02:
 	rm -rf ./ws02/install ./ws02/build  ./ws02/log
 
-clean: clean-ws00 clean-ws01 clean-ws02
+clean-all: clean-ws00 clean-ws01 clean-ws02
 	rm -rf ./install ./build  ./log
+
+clean: clean-ws02
+	@echo -e "\033[1;32mmake clean-all to clean all workspaces!\033[0m"
 
 delete-packages:
 	rm -rf ./ws00/src/*
 	rm -rf ./ws01/src/*
 	rm -rf ./ws02/src/*
 
-build:  \
-	build-ws00 \
-	build-ws01 \
-	build-ws02
+build-all:  build-ws00 build-ws01 build-ws02
+
+build: build-ws02
+	@echo -e "\033[1;32mmake clean-all to build all workspaces!\033[0m"
 
 build-ws00: 
 	cd ${PROJECT_DIR}/ws00; \
