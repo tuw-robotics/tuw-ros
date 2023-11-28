@@ -12,12 +12,7 @@ USER root
 
 RUN apt-get update && apt-get -y upgrade
 # dependencies for stage and stage_ros2
-RUN apt-get install -y git cmake g++ libjpeg8-dev libpng-dev libglu1-mesa-dev libltdl-dev libfltk1.1-dev
 RUN pip install setuptools==58.2.0
-
-# dependencies for rviz2
-RUN 
-RUN apt-get install -y libqt5svg5-dev ament-cmake
 
 USER ${MY_USER}
 # change color in bash green -> red
