@@ -67,6 +67,7 @@ clone-ws01: \
 	ws01/src/tuw_gazebo \
 	ws01/src/tuw_geometry \
 	ws01/src/tuw_msgs \
+	ws01/src/tuw_common \
 	ws01/src/tuw_rviz
 
 clone-ws02: \
