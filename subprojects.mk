@@ -51,8 +51,8 @@ ws02/src/tuw_fake_localization:
 ws02/src/tuw_graph:
 		git clone -b ros2 git@github.com:tuw-robotics/tuw_graph.git $@
 
-ws02/src/tuw_nav2_planner:
-		git clone -b ros2 git@github.com:tuw-robotics/tuw_nav2_planner.git $@
+ws02/src/tuw_planner:
+		git clone -b ros2 git@github.com:tuw-robotics/tuw_planner.git $@
 
 clone-ws00: \
 	ws00/src/teleop_tools \
@@ -73,6 +73,6 @@ clone-ws02: \
 	ws02/src/tuw_nav2\
 	ws02/src/tuw_fake_localization\
 	ws02/src/tuw_graph\
-	ws02/src/tuw_nav2_planner  
+	ws02/src/tuw_planner  
 
 clone: clone-ws00 clone-ws01 clone-ws02

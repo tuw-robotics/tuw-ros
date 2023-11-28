@@ -61,6 +61,9 @@ run:
 		${OWNER}/${PROJECT_NAME}-${USER}
 
 
+attach-to-run:
+	@docker exec -it ${HOSTNAME}-${PREFIX} bash
+		
 create:
 	@docker create -e "TERM=xterm-256color" --privileged \
 	    --network="host" --env="DISPLAY" \

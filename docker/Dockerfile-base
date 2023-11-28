@@ -65,7 +65,8 @@ RUN apt-get install -y \
       tmuxinator       \
       vim              \
       wget             \
-      iputils-ping
+      iputils-ping     \
+      libfftw3-dev
 
  #  GUI tools
 RUN apt-get install  -y \
@@ -77,7 +78,15 @@ RUN if [ "$INSTALL_CODE" = "true" ]; then $INSTALL_DIR/setup/install_code.sh; fi
 
  #  ROS packages
 RUN apt-get install  -y \
+      ros-$ROS_DISTRO-ament-cpplint \ 
+      ros-$ROS_DISTRO-ament-cppcheck \
       ros-$ROS_DISTRO-ament-cmake-vendor-package \ 
+      ros-$ROS_DISTRO-ament-cmake-xmllint \
+      ros-$ROS_DISTRO-ament-cmake-test \
+      ros-$ROS_DISTRO-ament-cmake-cpplint \
+      ros-$ROS_DISTRO-ament-cmake-cppcheck \
+      ros-$ROS_DISTRO-ament-cmake-uncrustify \ 
+      ros-$ROS_DISTRO-ament-cmake-lint-cmake \ 
       ros-$ROS_DISTRO-rmw-cyclonedds-cpp \
       ros-$ROS_DISTRO-teleop-tools \
       ros-$ROS_DISTRO-teleop-twist-joy \
@@ -86,7 +95,12 @@ RUN apt-get install  -y \
       ros-$ROS_DISTRO-tf-transformations \
       ros-$ROS_DISTRO-navigation2 \
       ros-$ROS_DISTRO-slam-toolbox \
-      ros-$ROS_DISTRO-teleop-tools
+      ros-$ROS_DISTRO-teleop-tools \
+      ros-$ROS_DISTRO-xacro
+
+ #  Gazebo tools
+RUN apt-get install  -y \
+      ros-$ROS_DISTRO-gazebo-ros-pkgs
 
  #  ROS tools
 RUN apt-get install  -y \
@@ -97,14 +111,13 @@ RUN apt-get install  -y \
       ros-$ROS_DISTRO-rqt-tf-tree \
       python3-rosdep
 
-
 # clean apt
 RUN apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
 
 USER ${MY_USER}
 # change color in bash green -> red
 RUN sed -i 's/'"1;32"'/'"1;31"'/g' ~/.bashrc
-RUN echo "export ROS_DISTRO=humble" >> ~/.bashrc
+RUN echo "export ROS_DISTRO=$ROS_DISTRO" >> ~/.bashrc
 RUN echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.bashrc
 RUN echo "export PROJECTS_DIR=$CONTAINER_PROJECTS_DIR" >> ~/.bashrc
 
