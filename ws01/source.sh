@@ -1,2 +1,2 @@
-# used in vscode tasks to source only workspaces up to the building workspace
+# needed workspaces to build
 source_ws ${PROJECT_DIR}/ws00/install/setup.bash
