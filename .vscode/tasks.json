@@ -18,9 +18,10 @@
         "tuw_graph_server",
         "tuw_graph_rviz_plugins",
         "rviz_common",
-        "rviz2"
+        "rviz2",
+        "tuw_msgs",
       ],
-      "default": "tuw_graph"
+      "default": "tuw_msgs"
     },
     {
       "type": "pickString",
@@ -31,7 +32,7 @@
         "ws01",
         "ws02"
       ],
-      "default": "ws02"
+      "default": "ws01"
     }
   ],
   "tasks": [
