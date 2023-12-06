@@ -20,6 +20,7 @@
         "rviz_common",
         "rviz2",
         "tuw_msgs",
+        "tuw_graph_msgs",
       ],
       "default": "tuw_msgs"
     },
@@ -59,6 +60,25 @@
       "detail": "builds tuw_geometry using colcon",
       "type": "shell",
       "command": "source ../env.sh; colcon build --packages-select ${input:pkgs} --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Debug",
+      "options": {
+        "cwd": "${workspaceFolder}/${input:workspace}/"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "never"
+      },
+      "runOptions": { 
+        "reevaluateOnRerun": false
+      }
+    },
+    {
+      "label": "colcon up-to",
+      "detail": "builds tuw_geometry using colcon",
+      "type": "shell",
+      "command": "source ../env.sh; colcon build --packages-up-to ${input:pkgs} --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Debug",
       "options": {
         "cwd": "${workspaceFolder}/${input:workspace}/"
       },
