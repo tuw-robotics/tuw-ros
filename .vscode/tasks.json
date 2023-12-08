@@ -33,7 +33,7 @@
         "ws01",
         "ws02"
       ],
-      "default": "ws01"
+      "default": "ws02"
     }
   ],
   "tasks": [
