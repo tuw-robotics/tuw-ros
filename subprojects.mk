@@ -24,6 +24,9 @@ ws01/src/Stage:
 ws01/src/stage_ros2:
 		git clone -b humble git@github.com:tuw-robotics/stage_ros2.git $@
 
+ws01/src/tuw_json:
+		git clone -b ros2 git@github.com:tuw-robotics/tuw_json.git $@
+
 ws01/src/tuw_msgs:
 		git clone -b ros2 git@github.com:tuw-robotics/tuw_msgs.git $@
 
@@ -67,6 +70,7 @@ clone-ws01: \
 	ws01/src/tuw_gazebo \
 	ws01/src/tuw_geometry \
 	ws01/src/tuw_msgs \
+	ws01/src/tuw_json \
 	ws01/src/tuw_common \
 	ws01/src/tuw_rviz
 
