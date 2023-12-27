@@ -21,9 +21,9 @@
         "rviz2",
         "tuw_msgs",
         "tuw_graph_msgs",
-        "tuw_json"
+        "tuw_graph_search"
       ],
-      "default": "tuw_graph_rviz_plugins"
+      "default": "tuw_graph_search"
     },
     {
       "type": "pickString",
