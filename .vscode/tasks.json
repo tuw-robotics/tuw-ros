@@ -21,9 +21,10 @@
         "rviz2",
         "tuw_msgs",
         "tuw_graph_msgs",
-        "tuw_graph_search"
+        "tuw_graph_search",
+        "tuw_planner_graph"
       ],
-      "default": "tuw_graph_search"
+      "default": "tuw_planner_graph"
     },
     {
       "type": "pickString",
