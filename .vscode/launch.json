@@ -223,6 +223,16 @@
             "cwd": "${workspaceFolder}",
         },
         {
+            "name": "graph_publisher_node",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/ws02/src/tuw_greenhive/scripts/graph_publisher_node.py",
+            "args": ["${workspaceFolder}/ws02/src/tuw_greenhive/config/gh/nodes.json", "${workspaceFolder}/ws02/src/tuw_greenhive/config/gh/edges.json"],
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}",
+        },
+        {
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
