@@ -39,8 +39,11 @@ make run
 ```
 sudo apt-get install ros-$ROS_DISTRO-ament-cmake-*
 export YOUR_PKG=tuw_geometry
-colcon build --packages-select $YOUR_PKG --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Debug --cmake-args -DBUILD_TESTING=true
-colcon test --ctest-args tests --packages-select $YOUR_PKG
+export YOUR_PKG=tuw_msgs
+export SELECT=select
+export SELECT=up-to
+colcon build --packages-$SELECT $YOUR_PKG --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Debug --cmake-args -DBUILD_TESTING=true
+colcon test --ctest-args tests --packages-$SELECT $YOUR_PKG
 colcon test-result
 colcon test-result --verbose
 cd src/$YOUR_PKG

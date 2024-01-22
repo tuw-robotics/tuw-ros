@@ -204,6 +204,15 @@
             "cwd": "${workspaceFolder}",
         },
         {
+            "name": "ObjectMap publisher",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/ws02/install/tuw_greenhive/lib/tuw_greenhive/object_map_publisher",
+            "args": ["--ros-args", "-p", "publishing_rate:=2.0", "-p", "filename:=${workspaceFolder}/ws02/src/tuw_greenhive/config/object_map/dummy.json"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+        },
+        {
             "name": "run pkg",
             "type": "cppdbg",
             "request": "launch",
