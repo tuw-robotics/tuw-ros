@@ -213,6 +213,15 @@
             "cwd": "${workspaceFolder}",
         },
         {
+            "name": "ObjectMap to CostMap",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/ws02/install/tuw_object_map/lib/tuw_object_map/generate_object_costmap",
+            "args": ["--ros-args",  "-p", "json_file:=${workspaceFolder}/ws02/src/tuw_greenhive/config/object_map/straden.json"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+        },
+        {
             "name": "run pkg",
             "type": "cppdbg",
             "request": "launch",
