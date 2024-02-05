@@ -23,8 +23,9 @@
         "tuw_graph_msgs",
         "tuw_graph_search",
         "tuw_planner_graph"
+        "tuw_object_map"
       ],
-      "default": "tuw_planner_graph"
+      "default": "tuw_object_map"
     },
     {
       "type": "pickString",
