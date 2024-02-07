@@ -25,7 +25,7 @@
         "tuw_planner_graph"
         "tuw_object_map"
       ],
-      "default": "tuw_object_map"
+      "default": "tuw_graph"
     },
     {
       "type": "pickString",
