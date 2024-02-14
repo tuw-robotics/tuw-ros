@@ -263,7 +263,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/ws00/build/nav2_planner/planner_server",
-            "args": ["--ros-args", "--params-file", "ws02/src/tuw_planner/tuw_planner_graph/config/nav2/astar.yaml"],
+            "args": ["--ros-args", "--params-file", "./ws02/src/tuw_planner/tuw_planner_graph/config/nav2/astar.yaml"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
         }

@@ -31,7 +31,7 @@ ws01/src/tuw_msgs:
 		git clone -b ros2 git@github.com:tuw-robotics/tuw_msgs.git $@
 
 ws01/src/tuw_debug:
-		git clone -b ros2 git@github.com:tuw-robotics/tuw_debug.git $@
+		git clone git@github.com:tuw-robotics/tuw_debug.git $@
 
 ws01/src/marker_msgs:
 		git clone -b ros2 git@github.com:tuw-robotics/marker_msgs.git $@
