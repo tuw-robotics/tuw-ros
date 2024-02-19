@@ -266,6 +266,15 @@
             "args": ["--ros-args", "--params-file", "./ws02/src/tuw_planner/tuw_planner_graph/config/nav2/astar.yaml"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
+        },
+        {
+            "name": "rviz: graph",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "./ws00/install/rviz2/bin/rviz2",
+            "args": ["-d", "./ws02/install/tuw_nav2/share/tuw_nav2/config/rviz/nav2_graph.rviz"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
         }
     ]
 }
