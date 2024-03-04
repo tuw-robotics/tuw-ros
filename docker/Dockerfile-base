@@ -75,6 +75,9 @@ RUN apt-get install -y git  g++ libjpeg8-dev libpng-dev libglu1-mesa-dev libltdl
 # dependencies for rviz2
 RUN apt-get install -y libqt5svg5-dev ament-cmake
 
+# dependencies for geographiclib
+RUN apt-get install -y geographiclib-tools libgeographic-dev
+
  #  GUI tools
 RUN apt-get install  -y \
       geany \
@@ -85,24 +88,25 @@ RUN if [ "$INSTALL_CODE" = "true" ]; then $INSTALL_DIR/setup/install_code.sh; fi
 
  #  ROS packages
 RUN apt-get install  -y \
-      ros-$ROS_DISTRO-ament-cpplint \ 
-      ros-$ROS_DISTRO-ament-cppcheck \
+      ros-$ROS_DISTRO-ament-cmake-cppcheck \
+      ros-$ROS_DISTRO-ament-cmake-cpplint \
+      ros-$ROS_DISTRO-ament-cmake-lint-cmake \ 
+      ros-$ROS_DISTRO-ament-cmake-test \
+      ros-$ROS_DISTRO-ament-cmake-uncrustify \ 
       ros-$ROS_DISTRO-ament-cmake-vendor-package \ 
       ros-$ROS_DISTRO-ament-cmake-xmllint \
-      ros-$ROS_DISTRO-ament-cmake-test \
-      ros-$ROS_DISTRO-ament-cmake-cpplint \
-      ros-$ROS_DISTRO-ament-cmake-cppcheck \
-      ros-$ROS_DISTRO-ament-cmake-uncrustify \ 
-      ros-$ROS_DISTRO-ament-cmake-lint-cmake \ 
-      ros-$ROS_DISTRO-rmw-cyclonedds-cpp \
-      ros-$ROS_DISTRO-teleop-tools \
-      ros-$ROS_DISTRO-teleop-twist-joy \
+      ros-$ROS_DISTRO-ament-cppcheck \
+      ros-$ROS_DISTRO-ament-cpplint \ 
+      ros-$ROS_DISTRO-geographic-msgs \
       ros-$ROS_DISTRO-laser-filters \
-      ros-$ROS_DISTRO-tf2-tools \
-      ros-$ROS_DISTRO-tf-transformations \
       ros-$ROS_DISTRO-navigation2 \
+      ros-$ROS_DISTRO-rmw-cyclonedds-cpp \
       ros-$ROS_DISTRO-slam-toolbox \
       ros-$ROS_DISTRO-teleop-tools \
+      ros-$ROS_DISTRO-teleop-tools \
+      ros-$ROS_DISTRO-teleop-twist-joy \
+      ros-$ROS_DISTRO-tf-transformations \
+      ros-$ROS_DISTRO-tf2-tools \
       ros-$ROS_DISTRO-xacro
 
  #  Gazebo tools

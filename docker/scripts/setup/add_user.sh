@@ -5,7 +5,7 @@ set -e
 echo "add user"
 
 apt-get install -y apt-utils sudo bash-completion
-groupadd -g ${MY_GID} ${MY_USER}
+groupadd -f -g ${MY_GID} ${MY_USER}
 useradd -m -s /bin/bash  -u ${MY_UID} -g ${MY_GID} ${MY_USER}
 export uid=${MY_UID} gid=${MY_GID}
 usermod -aG sudo ${MY_USER}

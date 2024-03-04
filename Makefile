@@ -1,6 +1,6 @@
 PROJECT_NAME = tuw-ros
 PROJECT_DIR = $(shell pwd)
-SHELL = /bin/bash
+SHELL = /usr/bin/env bash
 BUILD_TYPE = Debug
 include *.mk
 
