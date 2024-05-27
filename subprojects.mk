@@ -60,6 +60,9 @@ ws02/src/tuw_graph:
 ws02/src/tuw_planner:
 		git clone -b ros2 git@github.com:tuw-robotics/tuw_planner.git $@
 
+ws02/src/tuw_path_smoother:
+		git clone -b ros2 git@github.com:tuw-robotics/tuw_path_smoother.git $@
+
 clone-ws00: \
 	ws00/src/teleop_tools \
 	ws00/src/slam_toolbox \
@@ -82,6 +85,7 @@ clone-ws01: \
 clone-ws02: \
 	ws02/src/tuw_nav2 \
 	ws02/src/tuw_graph \
-	ws02/src/tuw_planner  
+	ws02/src/tuw_planner \
+	ws02/src/tuw_path_smoother  
 
 clone: clone-ws00 clone-ws01 clone-ws02
