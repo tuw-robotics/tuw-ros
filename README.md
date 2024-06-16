@@ -41,3 +41,5 @@ ament_clang_format
 ament_clang_format --reformat
 ament_uncrustify . --reformat
 ```
+ament_clang_format . ./lib/python3.10/site-packages/ament_clang_format/configuration/.clang-format
+ament_uncrustify . ./lib/python3.10/site-packages/ament_uncrustify/configuration/ament_code_style.cfg 
