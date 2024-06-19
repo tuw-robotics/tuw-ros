@@ -48,6 +48,9 @@ ws01/src/tuw_rviz:
 ws01/src/tuw_geometry:
 		git clone -b ros2 git@github.com:tuw-robotics/tuw_geometry.git $@
 
+ws01/src/tuw_eigen:
+		git clone -b ros2 git@github.com:tuw-robotics/tuw_eigen.git $@
+
 ws01/src/tuw_common:
 		git clone -b ros2 git@github.com:tuw-robotics/tuw_common.git $@
 

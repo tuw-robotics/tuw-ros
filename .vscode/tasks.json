@@ -9,6 +9,7 @@
       "options": [
         "tuw_nav2",
         "tuw_geometry",
+        "tuw_eigen",
         "tuw_laserscan_features",
         "Stage",
         "stage_ros2",

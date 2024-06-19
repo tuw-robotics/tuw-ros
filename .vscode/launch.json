@@ -78,6 +78,15 @@
             "cwd": "${workspaceFolder}",
         },
         {
+            "name": "tuw_eigen: test_eigen",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/ws01/build/tuw_eigen/test_eigen",
+            "args": [""],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+        },
+        {
             "name": "tuw_geometry: example",
             "type": "cppdbg",
             "request": "launch",
