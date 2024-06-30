@@ -104,6 +104,4 @@
         "**/.gitignore": true,
         "**/.gitkeep": true
     },
-    "cmake.sourceDirectory": "/home/markus/projects/mrrp2/ws00/build/gazebo_msgs/gazebo_msgs__py"
-    
 }
