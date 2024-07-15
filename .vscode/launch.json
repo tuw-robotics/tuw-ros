@@ -293,6 +293,15 @@
             "cwd": "${workspaceFolder}",
         },
         {
+            "name": "tuw_geo: geo_convert_node",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/ws02/install/tuw_geo_convert/lib/tuw_geo_convert/geo_convert_node",
+            "args": ["--ros-args", "-r", "gps:=hardware/gps/fix"],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+        },
+        {
             "name": "tuw_object_map: example_geo_map",
             "type": "cppdbg",
             "request": "launch",
