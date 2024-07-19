@@ -15,18 +15,19 @@
         "stage_ros2",
         "marker_msgs",
         "tuw_fake_localization",
-        "tuw_graph",
-        "tuw_graph_server",
-        "tuw_graph_rviz_plugins",
         "rviz_common",
         "rviz2",
         "tuw_msgs",
+        "tuw_graph",
+        "tuw_graph_server",
+        "tuw_graph_rviz_plugins",
+        "tuw_graph_generator",
         "tuw_graph_msgs",
         "tuw_graph_search",
-        "tuw_planner_graph"
+        "tuw_planner_graph",
         "tuw_object_map"
       ],
-      "default": "tuw_graph"
+      "default": "tuw_graph_generator"
     },
     {
       "type": "pickString",
@@ -67,15 +68,12 @@
       "options": {
         "cwd": "${workspaceFolder}/${input:workspace}/"
       },
+      "presentation": {
+          "clear": true                        // <-- this line
+      },
       "group": {
         "kind": "build",
         "isDefault": true
-      },
-      "presentation": {
-        "reveal": "never"
-      },
-      "runOptions": { 
-        "reevaluateOnRerun": false
       }
     },
     {
