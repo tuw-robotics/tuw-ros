@@ -237,13 +237,13 @@
             "args": ["--ros-args",  "-p",  "erosion_size:=6",  "-p",  "grid_resolution:=10",  "-p",  "connectivity:=4",  "-p", "map_topic:=object_costmap"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
-        },
+        }
         {
-            "name": "tuw_graph: graph_voronoi_node",
+            "name": "tuw_graph: graph_freespace",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/ws02/install/tuw_graph_voronoi/lib/tuw_graph_voronoi/graph_voronoi_node",
-            "args": ["--ros-args",  "-p", "map_topic:=object_map", "-p", "scale_mesh:=0.0", "-p", "threshold_cut:=0.0", "-p", "threshold_ending:=1.0", "-p", "publish_path:=false"],
+            "program": "${workspaceFolder}/ws02/install/tuw_graph_generator/lib/tuw_graph_generator/graph_freespace_node",
+            "args": ["--ros-args",  "-p", "pub_interval:=10", "-p", "timeout_service_call:=10", "-r", "graph:=graph_split", "-r", "publish_graph:=publish_graph_split"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
         },
@@ -262,15 +262,6 @@
             "request": "launch",
             "program": "${workspaceFolder}/ws02/install/tuw_graph_generator/lib/tuw_graph_generator/graph_split_node",
             "args": ["--ros-args"], // , "-r", "graph_split:=graph"
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-        },
-        {
-            "name": "tuw_graph: graph_x_objects_node",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/ws02/install/tuw_graph_x_objects/lib/tuw_graph_x_objects/graph_x_objects_node",
-            "args": ["--ros-args",  "-r", "objects:=objects_on_map"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
         },
