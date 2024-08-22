@@ -57,6 +57,9 @@ ws01/src/tuw_common:
 ws01/src/tuw_ros2_utils:
 		git clone -b ros2 git@github.com:tuw-robotics/tuw_ros2_utils.git $@
 
+ws02/src/tuw_costmap:
+		git clone -b ros2 git@github.com:tuw-robotics/tuw_costmap.git $@
+
 ws02/src/tuw_nav2:
 		git clone -b main git@github.com:tuw-robotics/tuw_nav2.git $@
 
